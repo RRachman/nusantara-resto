@@ -1,0 +1,37 @@
+@import 'variables';
+@import 'typography';
+@import 'colors';
+@import 'mixins';
+
+/* Reset global */
+
+#app {
+  margin: 0;
+  padding: 0;
+}
+
+// Headings responsive
+h1 {
+  font-size: $h1-desktop;
+  line-height: $lh-h1;
+  @media (max-width: 768px) {
+    font-size: $h1-mobile;
+  }
+}
+h2 {
+  font-size: $h2-desktop;
+  line-height: $lh-h2;
+  @media (max-width: 768px) {
+    font-size: $h2-mobile;
+  }
+}
+// dst bisa dibuat sampai h6
+
+/* Tambahan untuk memastikan .home-page benar-benar full */
+.home-page {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}

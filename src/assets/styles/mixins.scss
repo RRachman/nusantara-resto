@@ -1,0 +1,16 @@
+// src/assets/styles/_mixins.scss
+
+@mixin flex($dir: row, $justify: center, $align: center, $gap: 0) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin responsive($property, $value-mobile, $value-desktop) {
+  #{$property}: $value-mobile;
+  @media (min-width: 768px) {
+    #{$property}: $value-desktop;
+  }
+}
