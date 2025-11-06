@@ -1,3 +1,50 @@
+// src/assets/styles/_variables.scss
+@use 'colors' as *;
+
+// Fonts
+$font-cormorant: 'Cormorant Garamond', serif;
+$font-lora: 'Lora', serif;
+$font-base: $font-lora;
+
+// Alias utama
+$color-primary: $brand-500;
+$color-secondary: $gray-400;
+
+// ======================================
+// TYPOGRAPHY SCALE (dari file HTML kamu)
+// ======================================
+
+// Desktop
+$h1-desktop: 92px;
+$h2-desktop: 58px;
+$h3-desktop: 48px;
+$h4-desktop: 40px;
+$h5-desktop: 32px;
+$h6-desktop: 24px;
+
+// Mobile
+$h1-mobile: 40px;
+$h2-mobile: 36px;
+$h3-mobile: 32px;
+$h4-mobile: 24px;
+$h5-mobile: 20px;
+$h6-mobile: 18px;
+
+// Body (dari contoh bagian bawah HTML)
+$body-large: 20px;
+$body-medium: 16px;
+$body-regular: 14px;
+$body-small: 12px;
+
+// Line Heights (berdasarkan HTML)
+$lh-h1: 105%;
+$lh-h2: 115%;
+$lh-h3: 115%;
+$lh-h4: 115%;
+$lh-h5: 115%;
+$lh-h6: 115%;
+$lh-body: 1.4; // ~28px untuk body 20px
+
 // Radius & Transition
 $radius-base: 8px;
 $transition-base: 0.3s;

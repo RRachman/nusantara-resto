@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <!-- Buttons -->
+      <!-- Di Jumbotron component -->
       <div class="jumbotron__buttons">
         <Button type="secondary-color">Our Menu</Button>
         <Button type="primary">Reserve a Seat</Button>
@@ -44,83 +44,88 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/styles/variables' as *;
+@use '@/assets/styles/colors' as *;
+@use '@/assets/styles/mixins' as *;
 
 .jumbotron {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  @include center-flex;
 
   &__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    @include cover-background;
     z-index: 0;
   }
 
   &__overlay {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0, 21, 40, 0.6);
+    @include cover-background;
+    @include gradient-overlay;
     z-index: 1;
   }
 
   &__content {
-    position: absolute;
+    position: relative;
     z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    text-align: center;
-    max-width: 1022px;
-    width: 100%;
-    padding: 0 2rem;
+    @include container(1024px, 0 2rem);
+    @include text-center;
+    @include center-flex;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
   }
 
   &__text {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    @include center-flex;
+    gap: clamp(0.8rem, 2vw, 1.5rem);
+  }
 
-    .jumbotron__subtitle {
-      font-family: $font-cormorant;
-      font-style: italic;
-      font-weight: 600;
-      font-size: $h3-desktop;
-      line-height: $lh-h3;
-      color: #f9e68e;
-    }
+  &__subtitle {
+    @include heading(h4, $font-cormorant);
+    font-style: italic;
+    font-weight: 600;
+    color: $brand-200;
+  }
 
-    .jumbotron__title {
-      font-family: $font-cormorant;
-      font-weight: 600;
-      font-size: $h1-desktop;
-      line-height: $lh-h1;
-      color: #fdfdfd;
-    }
+  &__title {
+    @include heading(h2, $font-cormorant);
+    @include text-shadow;
+  }
 
-    .jumbotron__desc {
-      font-family: $font-base;
-      font-weight: 400;
-      font-size: $body-medium;
-      line-height: $lh-body;
-      color: #ededed;
-      max-width: 842px;
-      margin: 0 auto;
-    }
+  &__desc {
+    @include text(large, 400, $gray-100);
+    max-width: 820px;
   }
 
   &__buttons {
-    display: flex;
-    gap: 8px;
-    margin-top: 16px;
+    @include flex(row, center, center, 2px);
+    flex-wrap: wrap;
+    width: 50%;
+    gap: 1.5rem;
+
+    // Button sama panjang
+    :deep(button) {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    @include mobile {
+      flex-direction: row;
+      max-width: 400px;
+      gap: 10px;
+    }
+  }
+
+  @include tablet-down {
+    height: 90vh;
+    &__content {
+      max-width: 90%;
+    }
+  }
+
+  @include mobile {
+    height: auto;
+    min-height: 80vh;
+    padding: 10rem 1rem;
   }
 }
 </style>

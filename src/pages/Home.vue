@@ -4,6 +4,8 @@
     <div class="hero-section">
       <Navbar class="hero-section__navbar" />
       <Jumbotron class="hero-section__jumbotron" />
+      <About />
+      <BestSeller />
     </div>
   </section>
 </template>
@@ -11,10 +13,12 @@
 <script>
 import Navbar from '../components/organisms/Navbar.vue';
 import Jumbotron from '../components/organisms/Jumbotron.vue';
+import About from '../components/organisms/About.vue';
+import BestSeller from '../components/organisms/BestSeller.vue';
 
 export default {
   name: 'Home',
-  components: { Navbar, Jumbotron },
+  components: { Navbar, Jumbotron, About, BestSeller },
 };
 </script>
 
@@ -34,7 +38,7 @@ export default {
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100vh; // Use viewport height instead of fixed height
+  height: 100vh;
 
   &__navbar {
     position: absolute;

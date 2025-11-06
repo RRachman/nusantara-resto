@@ -1,33 +1,37 @@
-@import 'variables';
-@import 'typography';
-@import 'colors';
-@import 'mixins';
+// src/assets/styles/main.scss
+
+@use 'variables' as *;
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'typography' as *;
 
 /* Reset global */
-
-#app {
+#root,
+#app,
+html,
+body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-// Headings responsive
-h1 {
-  font-size: $h1-desktop;
-  line-height: $lh-h1;
-  @media (max-width: 768px) {
-    font-size: $h1-mobile;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
-h2 {
-  font-size: $h2-desktop;
-  line-height: $lh-h2;
-  @media (max-width: 768px) {
-    font-size: $h2-mobile;
-  }
-}
-// dst bisa dibuat sampai h6
 
-/* Tambahan untuk memastikan .home-page benar-benar full */
+body {
+  background-color: $color-bg;
+  color: $color-white;
+  font-family: $font-base;
+}
+
+/* If kamu ingin fallback default heading sizes (optional) */
+// (tidak perlu media queries karena typography sudah fluid via clamp())
+
+/* Tambahan untuk memastikan .home-page full */
 .home-page {
   width: 100vw;
   min-height: 100vh;

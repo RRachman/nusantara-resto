@@ -1,3 +1,5 @@
+// src/assets/styles/_colors.scss
+
 // Primary / Brand
 $color-white: #fcfcfd;
 $color-black: #000000;
@@ -31,7 +33,7 @@ $brand-800: #8d4513;
 $brand-900: #743913;
 $brand-950: #431d05;
 
-// Error
+// Error / Warning / Success (kept as you provided)
 $error-25: #fffbfa;
 $error-50: #fef3f2;
 $error-100: #fee4e2;
@@ -45,7 +47,6 @@ $error-800: #912018;
 $error-900: #7a271a;
 $error-950: #55160c;
 
-// Warning
 $warning-25: #fffcf5;
 $warning-50: #fffaeb;
 $warning-100: #fef0c7;
@@ -59,7 +60,6 @@ $warning-800: #93370d;
 $warning-900: #7a2e0e;
 $warning-950: #4e1d09;
 
-// Success
 $success-25: #f6fef9;
 $success-50: #ecfdf3;
 $success-100: #dcfae6;
