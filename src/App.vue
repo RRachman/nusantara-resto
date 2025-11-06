@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <Loading :isLoading="isLoading" />
-    <Navbar />
+    <!-- Navbar tidak ditampilkan di 404 page -->
+    <Navbar v-if="!isNotFoundPage" />
     <main>
       <router-view />
     </main>
-    <Footer />
+    <!-- Footer tidak ditampilkan di 404 page -->
+    <Footer v-if="!isNotFoundPage" />
   </div>
 </template>
 
@@ -26,35 +28,33 @@ export default {
       isLoading: false,
     };
   },
+  computed: {
+    isNotFoundPage() {
+      return this.$route.name === 'NotFound';
+    },
+  },
   created() {
-    // Setup router navigation guards
     this.setupRouterGuards();
   },
   methods: {
     setupRouterGuards() {
-      // Before route change
       this.$router.beforeEach((to, from, next) => {
         this.isLoading = true;
         next();
       });
 
-      // After route change
       this.$router.afterEach(() => {
-        // Delay sedikit untuk smooth transition
         setTimeout(() => {
           this.isLoading = false;
         }, 500);
       });
 
-      // Error handling
       this.$router.onError(() => {
         this.isLoading = false;
+        // Redirect ke 404 jika ada error routing
+        this.$router.push('/404');
       });
     },
   },
 };
 </script>
-
-<style>
-/* Global styles */
-</style>

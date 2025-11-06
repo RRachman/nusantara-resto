@@ -19,7 +19,7 @@
       </div>
 
       <!-- Button -->
-      <Button type="primary" @click="goToMenu" class="best-seller__button"> View Full Menu </Button>
+      <Button type="primary" @click="goToMenu" class="best-seller__button">View Full Menu</Button>
     </div>
 
     <!-- Error State -->
@@ -59,8 +59,6 @@ export default {
       try {
         this.loading = true;
         this.error = false;
-
-        // Gunakan method getRandomMeals yang sudah ditambahkan
         this.meals = await mealService.getRandomMeals(3);
       } catch (error) {
         console.error('Error loading best seller meals:', error);
@@ -87,61 +85,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/styles/variables' as *;
+@use '@/assets/styles/colors' as *;
+@use '@/assets/styles/mixins' as *;
+
 .best-seller {
   padding: 80px 24px;
-  background: #ffffff;
+  background: $color-white;
   min-height: 600px;
 
   &__container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 48px;
+    @include flex(column, flex-start, center, 48px);
   }
 
   &__content {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 80px;
+    @include flex(row-reverse, space-between, center, 80px);
     width: 100%;
   }
 
   &__cards {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 32px;
+    @include flex(column, flex-start, flex-start, 32px);
   }
 
   &__text {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 24px;
+    @include flex(column, center, flex-start, 24px);
   }
 
   &__title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    font-family: 'Cormorant', serif;
-    color: #1f2937;
+    @include heading(h2, $font-cormorant);
+    color: $gray-900;
     margin: 0;
-    line-height: 1.2;
   }
 
   &__description {
-    font-size: 1.125rem;
-    font-weight: 400;
-    color: #6b7280;
+    @include text(large, 400, $gray-600);
     line-height: 1.75;
     margin: 0;
   }
@@ -157,27 +138,24 @@ export default {
     padding: 80px 20px;
 
     .error-content {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
+      @include flex(column, center, center, 16px);
 
       h3 {
-        font-size: 1.5rem;
-        color: #1f2937;
+        @include heading(h4, $font-cormorant);
+        color: $gray-900;
         margin: 0;
       }
 
       p {
-        color: #6b7280;
+        @include text(medium, 400, $gray-600);
         margin: 0;
       }
     }
   }
 }
 
-// Responsive Design
-@media (max-width: 1024px) {
+// Tablet & Mobile
+@include tablet-down {
   .best-seller {
     padding: 60px 20px;
 
@@ -186,24 +164,25 @@ export default {
     }
 
     &__content {
-      flex-direction: column-reverse;
-      align-items: center;
-      gap: 40px;
+      @include flex(column-reverse, flex-start, center, 40px);
     }
 
     &__text {
       text-align: center;
-      align-items: center;
-      gap: 20px;
+      @include flex(column, center, center, 20px);
     }
 
     &__title {
-      font-size: 2rem;
+      @include heading(h3, $font-cormorant);
+    }
+
+    &__description {
+      @include text(medium, 400, $gray-600);
     }
   }
 }
 
-@media (max-width: 768px) {
+@include mobile {
   .best-seller {
     padding: 40px 16px;
     min-height: 500px;
@@ -216,34 +195,16 @@ export default {
       gap: 32px;
     }
 
+    &__cards {
+      gap: 24px;
+    }
+
     &__title {
-      font-size: 1.75rem;
+      @include heading(h4, $font-cormorant);
     }
 
     &__description {
-      font-size: 1rem;
-    }
-
-    &__button {
-      width: 40%;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .best-seller {
-    padding: 32px 12px;
-
-    &__container {
-      gap: 24px;
-    }
-
-    &__content {
-      gap: 24px;
-    }
-
-    &__title {
-      font-size: 1.5rem;
+      @include text(small, 400, $gray-600);
     }
 
     &__button {

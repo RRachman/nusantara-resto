@@ -1,5 +1,11 @@
 <template>
-  <nav class="navbar" :class="{ scrolled: isScrolled }">
+  <nav
+    class="navbar"
+    :class="{
+      scrolled: isScrolled,
+      'navbar--cart': isCartOrCheckoutPage,
+    }"
+  >
     <div class="navbar__inner">
       <!-- Logo -->
       <router-link to="/" class="navbar__logo">
@@ -21,23 +27,32 @@
         </router-link>
       </div>
 
-      <!-- Button -->
-      <Button type="primary" class="navbar__button"> Reserve a Seat </Button>
+      <!-- Cart Button (menggantikan Reserve Button) -->
+      <router-link to="/cart" class="navbar__cart-button">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-text">Cart</span>
+        <span v-if="cartStore.totalItems > 0" class="cart-badge">
+          {{ cartStore.totalItems }}
+        </span>
+      </router-link>
     </div>
   </nav>
 </template>
 
 <script>
-import Button from '../atoms/Button.vue';
+import { useCartStore } from '@/stores/cartStore';
 
 export default {
   name: 'Navbar',
-  components: { Button },
+  setup() {
+    const cartStore = useCartStore();
+    return { cartStore };
+  },
   data() {
     return {
       menuItems: [
         { name: 'Home', route: '/' },
-        { name: 'Menu', route: '/Gallery' }, // Link ke Gallery
+        { name: 'Menu', route: '/gallery' },
         { name: 'Our Story', route: '/our-story' },
         { name: 'Location', route: '/location' },
         { name: 'News', route: '/news' },
@@ -46,10 +61,14 @@ export default {
       isScrolled: false,
     };
   },
+  computed: {
+    isCartOrCheckoutPage() {
+      return this.$route.name === 'Cart' || this.$route.name === 'Checkout';
+    },
+  },
   methods: {
     setActive(item) {
-      this.isMenuOpen = false; // auto close saat klik menu
-      // Active state sekarang dihandle oleh router-link
+      this.isMenuOpen = false;
     },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
@@ -68,6 +87,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/styles/variables' as *;
+@use '@/assets/styles/colors' as *;
+@use '@/assets/styles/mixins' as *;
+
 .navbar {
   position: fixed;
   top: 0;
@@ -79,13 +102,45 @@ export default {
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
 
+  // ✅ Navbar hitam di cart & checkout page
+  &.navbar--cart {
+    background: $gray-900 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    position: static;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    &::after {
+      display: none;
+    }
+
+    // Override scrolled state di cart/checkout
+    &.scrolled {
+      background: $gray-900 !important;
+      backdrop-filter: none !important;
+    }
+
+    .navbar__menu {
+      background: rgba($color-white, 0.05);
+      border-color: rgba($color-white, 0.08);
+    }
+
+    .navbar__cart-button {
+      background: $brand-500;
+      color: $gray-900;
+
+      &:hover {
+        background: $brand-400;
+      }
+    }
+  }
+
   &.scrolled {
     background: rgba($color-nav-bg, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 
-    // Border bottom subtle
     &::after {
       content: '';
       position: absolute;
@@ -199,6 +254,51 @@ export default {
     }
   }
 
+  /* === CART BUTTON (menggantikan Reserve Button) === */
+  &__cart-button {
+    @include flex(row, center, center, 8px);
+    @include text(medium, 600, $color-white);
+    background: $brand-500;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 100px;
+
+    &:hover {
+      background: $brand-400;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba($brand-500, 0.3);
+    }
+
+    .cart-icon {
+      font-size: 18px;
+    }
+
+    .cart-text {
+      @include text(small, 600, $gray-900);
+    }
+
+    .cart-badge {
+      background: $color-white;
+      color: $brand-500;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      @include flex(row, center, center);
+      @include text(x-small, 700, $brand-500);
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
   /* === TOGGLE === */
   &__toggle {
     display: none;
@@ -230,20 +330,6 @@ export default {
 
     @include mobile {
       display: flex;
-    }
-  }
-
-  /* === BUTTON === */
-  &__button {
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba($brand-500, 0.3);
-    }
-
-    @include mobile {
-      display: none;
     }
   }
 
@@ -291,9 +377,9 @@ export default {
       }
     }
 
-    // Show button in mobile menu
-    &__menu.is-open + &__button {
-      display: block;
+    // Show cart button in mobile menu
+    &__menu.is-open + &__cart-button {
+      display: flex;
       position: fixed;
       bottom: 2rem;
       left: 50%;

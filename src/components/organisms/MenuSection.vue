@@ -483,6 +483,7 @@ export default {
 
     &__container {
       gap: 32px;
+      max-width: 80%;
     }
 
     &__title {
