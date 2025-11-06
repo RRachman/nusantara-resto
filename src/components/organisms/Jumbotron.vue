@@ -12,18 +12,16 @@
     <!-- Content -->
     <div class="jumbotron__content">
       <div class="jumbotron__text">
-        <div class="jumbotron__subtitle">Welcome to our restaurant</div>
-        <div class="jumbotron__title">A Symphony of Flavors in Every Bite</div>
-        <div class="jumbotron__desc">
-          Savor exquisite culinary creations prepared with fresh, local ingredients. Each dish celebrates vibrant flavors, presented in an ambiance of sophistication. Join us for an unforgettable dining experience where every bite tells a
-          story.
-        </div>
+        <div class="jumbotron__subtitle" v-if="subtitle">{{ subtitle }}</div>
+        <div class="jumbotron__title" v-if="title">{{ title }}</div>
+        <div class="jumbotron__desc" v-if="description">{{ description }}</div>
       </div>
 
-      <!-- Di Jumbotron component -->
-      <div class="jumbotron__buttons">
-        <Button type="secondary-color">Our Menu</Button>
-        <Button type="primary">Reserve a Seat</Button>
+      <!-- Buttons -->
+      <div class="jumbotron__buttons" v-if="buttons.length">
+        <Button v-for="(button, index) in buttons" :key="index" :type="button.type" @click="button.action">
+          {{ button.text }}
+        </Button>
       </div>
     </div>
   </section>
@@ -31,13 +29,36 @@
 
 <script>
 import Button from '../atoms/Button.vue';
-import videoSrc from '@/assets/videos/jumbotron.mp4';
+import defaultVideo from '@/assets/videos/jumbotron.mp4';
 
 export default {
   name: 'Jumbotron',
   components: { Button },
-  data() {
-    return { videoSrc };
+  props: {
+    videoSrc: {
+      type: String,
+      default: defaultVideo,
+    },
+    subtitle: {
+      type: String,
+      default: 'Welcome to our restaurant',
+    },
+    title: {
+      type: String,
+      default: 'A Symphony of Flavors in Every Bite',
+    },
+    description: {
+      type: String,
+      default:
+        'Savor exquisite culinary creations prepared with fresh, local ingredients. Each dish celebrates vibrant flavors, presented in an ambiance of sophistication. Join us for an unforgettable dining experience where every bite tells a story.',
+    },
+    buttons: {
+      type: Array,
+      default: () => [
+        { text: 'Our Menu', type: 'secondary-color', action: () => console.log('Menu clicked') },
+        { text: 'Reserve a Seat', type: 'primary', action: () => console.log('Reserve clicked') },
+      ],
+    },
   },
 };
 </script>
@@ -102,7 +123,6 @@ export default {
     width: 50%;
     gap: 1.5rem;
 
-    // Button sama panjang
     :deep(button) {
       flex: 1;
       min-width: 150px;

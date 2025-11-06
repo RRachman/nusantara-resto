@@ -16,6 +16,10 @@
   gap: $gap;
 }
 
+@mixin flex-wrap {
+  flex-wrap: wrap;
+}
+
 @mixin cover-background {
   position: absolute;
   inset: 0;
