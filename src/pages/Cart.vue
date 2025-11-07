@@ -72,7 +72,7 @@
 
             <Button type="primary" @click="$router.push('/checkout')" class="btn-checkout"> Checkout </Button>
 
-            <button @click="$router.push('/menu')" class="btn-continue-shopping">← Continue Shopping</button>
+            <button @click="$router.push('/Gallery')" class="btn-continue-shopping">← Continue Shopping</button>
           </div>
         </div>
       </div>
@@ -117,9 +117,7 @@ export default {
     },
 
     checkout() {
-      // Implement checkout logic here
       alert('Checkout functionality would be implemented here!');
-      // this.$router.push('/checkout');
     },
   },
 };
