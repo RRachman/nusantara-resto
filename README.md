@@ -24,14 +24,6 @@ Vue Router — untuk navigasi antar halaman
 
 Netlify — sebagai platform deployment
 
-📁 Struktur Folder Singkat
-src/
-├── assets/          # Gambar dan style SCSS global
-├── components/      # Komponen UI reusable (Navbar, Footer, Card, dsb)
-├── pages/           # Halaman utama (Home, Menu, Detail, dsb)
-├── router/          # Konfigurasi routing
-├── App.vue          # Root component
-└── main.js          # Entry point aplikasi
 
 🎨 Fitur Utama
 
@@ -77,3 +69,4 @@ Proyek ini dibuat khusus untuk memenuhi tugas pre-test Front End Developer yang 
 Monica Ariyanti
 People Recruitment
 PT Paninti Hub Indonesia
+
