@@ -1,55 +1,52 @@
-# 🍽️ Nusantara Resto  
-**Frontend Developer Skill Test — PT Paninti Hub Indonesia**  
-By: [Rian Rahman](https://github.com/RRachman)
+🍽️ Nusantara Resto
 
----
+Frontend Developer Skill Test — PT Paninti Hub Indonesia
+By: Rian Rahman
 
-## 🌐 Live Preview  
-🔗 **[https://nusantararestoran.netlify.app/](https://nusantararestoran.netlify.app/)**  
+🌐 Live Preview
 
----
+🔗 https://nusantararestoran.netlify.app/
 
-## 🧩 Deskripsi Proyek  
-**Nusantara Resto** adalah website restoran bertema kuliner nusantara yang dibuat sebagai bagian dari **Pre-Test Skill Front End Developer** PT Paninti Hub Indonesia.  
+🧩 Deskripsi Proyek
+
+Nusantara Resto adalah website restoran bertema kuliner nusantara yang dibuat sebagai bagian dari Pre-Test Skill Front End Developer PT Paninti Hub Indonesia.
 Aplikasi ini menampilkan daftar menu makanan, detail makanan, dan fitur interaktif untuk memperkenalkan keanekaragaman kuliner Indonesia dengan tampilan modern dan responsif.
 
----
+🛠️ Teknologi yang Digunakan
 
-## 🛠️ Teknologi yang Digunakan  
-- **Vue.js 3** — framework utama pengembangan frontend  
-- **Vite** — bundler untuk pengembangan cepat  
-- **SCSS** — styling modular dengan struktur maintainable  
-- **Vue Router** — untuk navigasi antar halaman  
-- **Netlify** — sebagai platform deployment  
+Vue.js 3 — framework utama pengembangan frontend
 
----
+Vite — bundler untuk pengembangan cepat
 
-## 📁 Struktur Folder Singkat
+SCSS — styling modular dengan struktur maintainable
+
+Vue Router — untuk navigasi antar halaman
+
+Netlify — sebagai platform deployment
+
+📁 Struktur Folder Singkat
 src/
-├── assets/ # Gambar dan style SCSS global
-├── components/ # Komponen UI reusable (Navbar, Footer, Card, dsb)
-├── pages/ # Halaman utama (Home, Menu, Detail, dsb)
-├── router/ # Konfigurasi routing
-├── App.vue # Root component
-└── main.js # Entry point aplikasi
+├── assets/          # Gambar dan style SCSS global
+├── components/      # Komponen UI reusable (Navbar, Footer, Card, dsb)
+├── pages/           # Halaman utama (Home, Menu, Detail, dsb)
+├── router/          # Konfigurasi routing
+├── App.vue          # Root component
+└── main.js          # Entry point aplikasi
 
+🎨 Fitur Utama
 
----
+✅ Desain responsif dan modern
+✅ Navigasi antar halaman menggunakan Vue Router
+✅ Struktur SCSS modular dengan komponen terpisah
+✅ Tampilan daftar menu dan detail makanan
+✅ Deploy online melalui Netlify
 
-## 🎨 Fitur Utama  
-✅ Desain responsif dan modern  
-✅ Navigasi antar halaman menggunakan Vue Router  
-✅ Struktur SCSS modular dengan komponen terpisah  
-✅ Tampilan daftar menu dan detail makanan  
-✅ Deploy online melalui Netlify  
+🚀 Cara Menjalankan Proyek Secara Lokal
 
----
+Clone Repository
 
-## 🚀 Cara Menjalankan Proyek Secara Lokal  
-1. **Clone Repository**
-   ```bash
-   git clone https://github.com/RRachman/nusantara-resto.git
-   cd nusantara-resto
+git clone https://github.com/RRachman/nusantara-resto.git
+cd nusantara-resto
 
 
 Install Dependencies
