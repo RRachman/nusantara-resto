@@ -12,7 +12,7 @@
         <div class="empty-icon">🛒</div>
         <h2>Your cart is empty</h2>
         <p>Add some delicious meals to get started!</p>
-        <Button type="primary" @click="$router.push('/menu')">Browse Menu</Button>
+        <Button type="primary" @click="$router.push('/Gallery')">Browse Menu</Button>
       </div>
 
       <!-- Cart Content -->
