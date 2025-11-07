@@ -1,7 +1,6 @@
 🍽️ Nusantara Resto
 
 Frontend Developer Skill Test — PT Paninti Hub Indonesia
-By: Rian Rahman
 
 🌐 Live Preview
 
@@ -33,40 +32,16 @@ Netlify — sebagai platform deployment
 ✅ Tampilan daftar menu dan detail makanan
 ✅ Deploy online melalui Netlify
 
-🚀 Cara Menjalankan Proyek Secara Lokal
-
-Clone Repository
-
-git clone https://github.com/RRachman/nusantara-resto.git
-cd nusantara-resto
-
-
-Install Dependencies
-
-npm install
-
-
-Jalankan Server Lokal
-
-npm run dev
-
-
-Buka di browser: http://localhost:5173
 
 📬 Kontak
 
 Rian Rahman
-📧 Email: rianrahman.dev@gmail.com
+
+📧 Email: rachmanryan70@gmail.com
 
 💻 GitHub: github.com/RRachman
 
 🌐 Live App: https://nusantararestoran.netlify.app/
 
-📝 Keterangan Tambahan
 
-Proyek ini dibuat khusus untuk memenuhi tugas pre-test Front End Developer yang diberikan oleh PT Paninti Hub Indonesia, berdasarkan instruksi dari:
-
-Monica Ariyanti
-People Recruitment
-PT Paninti Hub Indonesia
 
