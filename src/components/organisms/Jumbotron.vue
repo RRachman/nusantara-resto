@@ -297,7 +297,7 @@ export default {
 
   @include mobile {
     height: auto;
-    min-height: 80vh;
+    min-height: 100vh;
     padding: 10rem 1rem;
 
     &__buttons {
