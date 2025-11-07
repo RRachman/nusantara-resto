@@ -7,7 +7,7 @@
       description="Discover the rich culinary heritage of Indonesia through our carefully curated dishes. Each recipe is passed down through generations, bringing you the true taste of home."
       :buttons="[
         { text: 'Our Menu', type: 'secondary-color', action: () => $router.push('/menu') },
-        { text: 'Reserve Now', type: 'primary', action: () => $router.push('/reservation') },
+        { text: 'Your Order', type: 'primary', action: () => $router.push('/cart') },
       ]"
     />
     <MenuSection />

@@ -5,6 +5,7 @@
     <Navbar v-if="!isNotFoundPage" />
     <main>
       <router-view />
+      <ConfirmPopup />
     </main>
     <!-- Footer tidak ditampilkan di 404 page -->
     <Footer v-if="!isNotFoundPage" />
@@ -15,6 +16,7 @@
 import Navbar from '@/components/organisms/Navbar.vue';
 import Footer from '@/components/organisms/Footer.vue';
 import Loading from '@/components/atoms/Loading.vue';
+import ConfirmPopup from '@/components/atoms/ConfirmPopup.vue';
 
 export default {
   name: 'App',
@@ -22,6 +24,7 @@ export default {
     Navbar,
     Footer,
     Loading,
+    ConfirmPopup,
   },
   data() {
     return {

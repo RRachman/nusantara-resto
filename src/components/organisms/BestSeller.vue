@@ -189,6 +189,7 @@ export default {
 
     &__container {
       gap: 32px;
+      max-width: 70%;
     }
 
     &__content {

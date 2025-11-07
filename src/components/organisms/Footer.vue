@@ -11,36 +11,36 @@
 
         <!-- Middle Section - Links -->
         <div class="footer__links">
-          <div class="footer__link-item footer__link-item--heading">Home</div>
-          <div class="footer__link-item">Menu</div>
-          <div class="footer__link-item">Our Story</div>
-          <div class="footer__link-item">Reservation</div>
-          <div class="footer__link-item">News</div>
+          <router-link to="/" class="footer__link-item footer__link-item--heading">Home</router-link>
+          <router-link to="/Gallery" class="footer__link-item">Menu</router-link>
+          <router-link to="/our-story" class="footer__link-item">Our Story</router-link>
+          <router-link to="/reservation" class="footer__link-item">Reservation</router-link>
+          <router-link to="/news" class="footer__link-item">News</router-link>
         </div>
 
         <!-- Right Section - Social -->
         <div class="footer__social">
           <div class="footer__social-title">Connect On</div>
           <div class="footer__social-icons">
-            <div class="footer__social-icon facebook">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer__social-icon facebook">
               <div class="icon-bg"></div>
               <div class="icon-f"></div>
-            </div>
-            <div class="footer__social-icon instagram">
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer__social-icon instagram">
               <div class="icon-gradient-1"></div>
               <div class="icon-gradient-2"></div>
               <div class="icon-gradient-3"></div>
               <div class="icon-dot"></div>
-            </div>
-            <div class="footer__social-icon twitter">
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer__social-icon twitter">
               <div class="icon-bird"></div>
-            </div>
-            <div class="footer__social-icon whatsapp">
+            </a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="footer__social-icon whatsapp">
               <div class="icon-bg-gray"></div>
               <div class="icon-bg-green"></div>
               <div class="icon-bg-white"></div>
               <div class="icon-dot-white"></div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -49,9 +49,9 @@
       <div class="footer__bottom">
         <div class="footer__copyright">©Nusantara 2025. All rights reserved.</div>
         <div class="footer__legal">
-          <div class="footer__legal-item">Privacy Policy</div>
+          <router-link to="/privacy-policy" class="footer__legal-item">Privacy Policy</router-link>
           <div class="footer__legal-separator"></div>
-          <div class="footer__legal-item">Terms of Services</div>
+          <router-link to="/terms-of-service" class="footer__legal-item">Terms of Services</router-link>
         </div>
       </div>
     </div>
@@ -177,6 +177,7 @@ export default {
     @include text(large, 400, $gray-400);
     cursor: pointer;
     transition: color 0.3s ease;
+    text-decoration: none;
 
     &:hover {
       color: $color-white;
@@ -211,6 +212,8 @@ export default {
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease;
+    display: block;
+    text-decoration: none;
 
     &:hover {
       transform: scale(1.1);
@@ -364,6 +367,7 @@ export default {
     @include text(medium, 400, $gray-400);
     cursor: pointer;
     transition: color 0.3s ease;
+    text-decoration: none;
 
     &:hover {
       color: $color-white;

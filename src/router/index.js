@@ -5,6 +5,7 @@ import Gallery from '@/pages/Gallery.vue';
 import Cart from '@/pages/Cart.vue';
 import Checkout from '@/pages/Checkout.vue';
 import NotFound from '@/pages/NotFound.vue';
+
 const routes = [
   {
     path: '/',

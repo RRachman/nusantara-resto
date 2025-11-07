@@ -23,7 +23,7 @@
 
       <div class="action-buttons">
         <button class="btn-custom-secondary" @click="addToCart">Add to Cart</button>
-        <Button type="primary" @click="buyNow" class="btn-buy-now">Buy Now</Button>
+        <Button type="primary" @click="handleBuyNow" class="btn-buy-now">Buy Now</Button>
       </div>
     </div>
   </div>
@@ -31,6 +31,7 @@
 
 <script>
 import { useCartStore } from '@/stores/cartStore';
+import { useConfirmStore } from '@/stores/confirmStore';
 import Button from './Button.vue';
 
 export default {
@@ -58,7 +59,6 @@ export default {
 
     handleImageError() {
       this.imageError = true;
-      // Fallback image atau hide image container
     },
 
     increaseQuantity() {
@@ -85,12 +85,21 @@ export default {
       this.quantity = 1;
       this.$emit('addedToCart', this.meal);
 
-      // ✅ Redirect ke cart page
+      // Redirect ke cart page
       this.$router.push('/cart');
     },
+    handleBuyNow() {
+      console.log('Buy Now clicked for:', this.meal.strMeal);
 
-    buyNow() {
       const cartStore = useCartStore();
+      const confirmStore = useConfirmStore();
+
+      console.log('Confirm store state before:', {
+        isConfirmOpen: confirmStore.isConfirmOpen,
+        confirmData: confirmStore.confirmData,
+      });
+
+      // Tambahkan item ke cart
       const mealWithPrice = {
         ...this.meal,
         price: parseFloat(this.price),
@@ -100,8 +109,25 @@ export default {
         cartStore.addToCart(mealWithPrice);
       }
 
+      // Buka popup konfirmasi
+      confirmStore.openConfirm(
+        {
+          mealName: this.meal.strMeal,
+          quantity: this.quantity,
+          totalPrice: (parseFloat(this.price) * this.quantity).toFixed(2),
+          image: this.meal.strMealThumb,
+        },
+        () => {
+          this.$router.push('/checkout');
+        }
+      );
+
+      console.log('Confirm store state after:', {
+        isConfirmOpen: confirmStore.isConfirmOpen,
+        confirmData: confirmStore.confirmData,
+      });
+
       this.quantity = 1;
-      cartStore.setCartOpen(true);
     },
   },
 };

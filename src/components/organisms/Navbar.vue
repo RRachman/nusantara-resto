@@ -25,9 +25,18 @@
         <router-link v-for="(item, index) in menuItems" :key="index" :to="item.route" :class="['navbar__menu-item', { active: $route.path === item.route }]" @click="setActive(item)">
           {{ item.name }}
         </router-link>
+
+        <!-- Cart Button untuk Mobile -->
+        <router-link to="/cart" class="navbar__cart-button-mobile" @click="setActive">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-text">Cart</span>
+          <span v-if="cartStore.totalItems > 0" class="cart-badge">
+            {{ cartStore.totalItems }}
+          </span>
+        </router-link>
       </div>
 
-      <!-- Cart Button (menggantikan Reserve Button) -->
+      <!-- Cart Button (Desktop) -->
       <router-link to="/cart" class="navbar__cart-button">
         <span class="cart-icon">🛒</span>
         <span class="cart-text">Cart</span>
@@ -206,6 +215,7 @@ export default {
     border-radius: 50px;
     padding: 0.5rem 1.5rem;
     transition: all 0.3s ease;
+    margin-left: -70px;
 
     @include tablet-down {
       gap: 1.5rem;
@@ -254,7 +264,7 @@ export default {
     }
   }
 
-  /* === CART BUTTON (menggantikan Reserve Button) === */
+  /* === CART BUTTON (Desktop) === */
   &__cart-button {
     @include flex(row, center, center, 8px);
     @include text(medium, 600, $color-white);
@@ -299,6 +309,52 @@ export default {
     }
   }
 
+  /* === CART BUTTON (Mobile) === */
+  &__cart-button-mobile {
+    display: none;
+
+    @include mobile {
+      @include flex(row, center, center, 8px);
+      @include text(medium, 600, $color-white);
+      background: $brand-500;
+      padding: 12px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      min-width: 100px;
+      margin-top: 1rem;
+
+      &:hover {
+        background: $brand-400;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba($brand-500, 0.3);
+      }
+
+      .cart-icon {
+        font-size: 18px;
+      }
+
+      .cart-text {
+        @include text(small, 600, $gray-900);
+      }
+
+      .cart-badge {
+        background: $color-white;
+        color: $brand-500;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        @include flex(row, center, center);
+        @include text(x-small, 700, $brand-500);
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
   /* === TOGGLE === */
   &__toggle {
     display: none;
@@ -338,7 +394,7 @@ export default {
     &__menu {
       position: fixed;
       top: 100%;
-      left: 0;
+      margin-left: -20px;
       width: 100%;
       background: rgba($color-nav-bg, 0.95);
       backdrop-filter: blur(30px);
@@ -357,6 +413,7 @@ export default {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+        justify-content: center;
       }
 
       &-item {
@@ -378,14 +435,10 @@ export default {
     }
 
     // Show cart button in mobile menu
-    &__menu.is-open + &__cart-button {
-      display: flex;
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 3rem);
-      max-width: 280px;
+    &__cart-button-mobile {
+      display: flex !important;
+      justify-content: center;
+      margin-top: 1rem;
     }
   }
 
